@@ -30,9 +30,8 @@ jobs:
       - name: Build Docker Image
         run: |
           docker build \
-          -t ghcr.io/${REPO_LC}/myapp:${{ github.sha }} .
+            -t ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
 
       - name: Push Docker Image
         run: |
-          docker push \
-          ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
